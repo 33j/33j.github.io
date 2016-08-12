@@ -14,7 +14,7 @@
 			<li class="menu"><a href="#about">About</a></li>
 		</ul>
 		
-		<ol type = "1">
+		<ol type = "1" style="list-style-type:none">
 			<form action="$_SERVER['PHP_SELF']">
 			
 				<div>
