@@ -15,7 +15,7 @@
 		</ul>
 		
 		<ol type = "1">
-			<form>
+			<form action="$_SERVER['PHP_SELF']">
 			
 				<div>
 					<div class="left"><li>UserName:</li></div>
