@@ -1,5 +1,7 @@
 <?php
-	echo "1<br>";
+	$str = "hi";
+	echo ($str."hi"."<br>");
+	echo ("esp");
 	exit();
 	echo "2<br>";
 ?>
@@ -9,3 +11,16 @@
 	exit();
 	echo "4<br>";
 ?>
+
+
+<html>
+
+<head>
+</head>
+<body>
+	<form>
+
+	</form>
+</body>
+
+</html>

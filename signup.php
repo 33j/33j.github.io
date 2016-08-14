@@ -15,52 +15,81 @@
 
 
 	<?php
-		
-		// first set the name to be error
-		$userNameErr = $firstNameErr = $lastNameErr = $contactErr = $passwordErr = "";
-		$userName = $firstName = $lastName = $address = $city=$contact = $password = $confpass = "";
+		// Set all error to be "" at the beginning
+		$userNameErr = $firstNameErr = $lastNameErr = $contactErr = $passwordErr = $confpassErr = $emailErr= "";
+		$userName = $firstName = $lastName = $address = $city = $state = $email = $contact = $password = $confpass = "";
 		$valid = TRUE;
-		$until = FALSE;
+		$finishValidation = FALSE;
 		if ($_SERVER['REQUEST_METHOD']=="POST"){
-			if (empty($userName=$_POST["username"])){
+			if (empty($userName=trim($_POST["username"]))){
 				$userNameErr = "UserName is required";
 				$valid = FALSE;
 			}
 			else if (!preg_match("/^[a-zA-Z0-9]*$/",$userName)){
-				$userNameErr = "Only numbers and letters in UserName";
+				$userNameErr = "Only Numbers and Letters in UserName (No Space)";
 				$valid = FALSE;
 			}
-			if (empty($firstName=$_POST["firstname"])){
+
+			if (empty($firstName=trim($_POST["firstname"]))){
 				$firstNameErr = "First Name is required";
 				$valid = FALSE;
 			}
-			else if (!preg_match("/^[a-zA-Z]*$/",$firstName)){
-				$firstNameErr = "Only letters in First Name";
+			else if (!preg_match("/^[a-zA-Z ]*$/",$firstName)){
+				$firstNameErr = "Only Letters in First Name";
 				$valid = FALSE;
 			}
-			if (empty($lastName=$_POST["lastname"])){
+
+			if (empty($lastName=trim($_POST["lastname"]))){
 				$lastNameErr = "Last Name is required";
 				$valid = FALSE;
 			}
-			else if (!preg_match("/^[a-zA-Z]*$/",$lastName)){
-				$lastNameErr = "Only letters in Last Name";
+			else if (!preg_match("/^[a-zA-Z ]*$/",$lastName)){
+				$lastNameErr = "Only Letters in Last Name";
+				$valid = FALSE;
+			}
+
+			if (empty($contact=trim($_POST["phone"]))){
+				$contactErr = "Contact Number is required";
+				$valid = FALSE;
+			}
+			else if (!preg_match("/^[0-9]*$/",$contact)){
+				$contactErr = "Only Numbers in Contact";
+				$valid = FALSE;
+			}
+
+			$email = $_POST["email"];
+			if (!empty($email)&&!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				$emailErr = "Invalid email";
+				$valid = FALSE;
+			}
+
+			if (empty($password=$_POST["password"])){
+				$passwordErr = "Password is required";
+				$valid = FALSE;
+			}
+			else if(empty($confpass=$_POST["confpass"])){
+				$confpassErr = "Confrim Password is required";
+				$valid = FALSE;
+			}
+			else if ($password!=$confpass){
+				$confpassErr = "Confrim Password not consistent";
 				$valid = FALSE;
 			}
 
 
+
+
+
+
 			
- 		$until = TRUE;
+ 		$finishValidation = TRUE;
 		} 
-		if ($valid&&$until){
+		if ($valid&&$finishValidation){
 			echo "<script type='text/javascript'>window.location.href = 'http://yahoo.com';</script>";
-        	//exit();
+        	exit();
 		}
 	?>
 
-
-	
-
-	
 		<ul>
 			<li class="menu"><a class="active" href="index.html">Home</a></li>
 			<li class="menu"><a href="contact.html">Contact</a></li>
@@ -73,65 +102,59 @@
 					
 				<div>
 					<div class="left"><li>UserName:</li></div>
-					<div class="right"><input class="text" type="text" name="username" value="<?php print $userName;?>">
+					<div class="right"><input class="text" type="text" name="username" value="<?php print $userName; ?>">
 						<span> * <?php print $userNameErr ?></span></div>
 				</div>
 				
 				<div>
 					<div class="left"><li>First Name:</li></div>
-					<div class="right"><input class="text" type="text" name="firstname" value="<?php print $firstName;?>">
-						<span> *  <?php //print $firstNameErr ?> </span></div>
+					<div class="right"><input class="text" type="text" name="firstname" value="<?php print $firstName; ?>">
+						<span> *  <?php print $firstNameErr ?> </span></div>
 				</div>
 				
 				<div>
 					<div class="left"><li>Last Name:</li></div>
-					<div class="right"><input class="text" type="text" name="lastname" value="<?php print $lastName;?>">
-						<span> * <?php //print $lastNameErr ?></span></div>
+					<div class="right"><input class="text" type="text" name="lastname" value="<?php print $lastName; ?>">
+						<span> * <?php print $lastNameErr ?></span></div>
 				</div>
 				
-			
-			
-			
-			
-		
 				<div>
 					<div class="left"><li>Address:</li></div>
-					<div class="right"><input class="text" type="text" name="address"></div>
+					<div class="right"><input class="text" type="text" name="address" value="<?php print $address; ?>"></div>
 				</div>
 				
 				<div>				
 					<div class="left"><li>City:</li></div>
-					<div class="right"><input class="text" type="text" name="city"></div>
+					<div class="right"><input class="text" type="text" name="city" value="<?php print($city); ?>"></div>
 				</div>
 					
 				<div>	
 					<div class="left"><li>State:</li></div>
-					<div class="right"><input class="text" type="text" name="state"></div>
+					<div class="right"><input class="text" type="text" name="state" value="<?php print($state) ?>"></div>
 				</div>
-	
-
-		
+			
 				<div>
 					<div class="left"><li>e-mail:</li></div>
-					<div class="right"><input class="text" type="text" name="email"></div>
+					<div class="right"><input class="text" type="text" name="email" value="<?php print($email) ?>">
+						<span><?php print($emailErr)?></span></div>
 				</div>
 				
 				<div>
 					<div class="left"><li>Conact number:</li></div>
-					<div class="right"><input class="text" type="text" name="phone">
+					<div class="right"><input class="text" type="text" name="phone" value="<?php print($contact) ?>">
 						<span> * <?php print $contactErr ?></span></div>
 				</div>
 				
-
 				<div>
 					<div class="left"><li>Password:</li></div>
-					<div class="right"><input class="text" type="text" name="password">
-						<span> * <?php print $passwordErr ?></span></div>
+					<div class="right"><input class="text" type="password" name="password" value="<?php print($password) ?>">
+						<span> * <?php print($passwordErr) ?></span></div>
 				</div>
 				
 				<div>
 					<div class="left"><li>Confirm Password:</li></div>
-					<div class="right"><input class="text" type="text" name="confpass"><span> *</span></div>
+					<div class="right"><input class="text" type="password" name="confpass">
+						<span> * <?php print($confpassErr) ?></span></div>
 				</div>
 				
 			
@@ -142,14 +165,6 @@
 				<div class="right"><a href="login.html"><input type="reset" value="Cancel"></a></div>
 			</div>
 		</form>
-	<div>
-		<?php 
-			//var_dump($valid);
-			//print "<br>$userName" ; 
-		?>
-
-		
-	</div>
 
 
 	</body>	
