@@ -1,26 +1,33 @@
 <?php
-	$str = "hi";
-	echo ($str."hi"."<br>");
-	echo ("esp");
-	exit();
-	echo "2<br>";
+
+
+
+
+$dbservername = "comp380gp4.cztejaciasub.us-west-2.rds.amazonaws.com";
+$dbusername = "comp380";
+$dbpassword = "comp380gp4";
+$dbname = "comp380gp4";
+
+
+$userName = "username";
+
+//setcookie("userName", "", time() - 3600,"/");
+//unset($_COOKIE["userName"]);
+
+//	setcookie("userName", $userName, time() + (86400 * 30), "/");
+echo $_SESSION	["userName"];
+	
+if (isset($_SESSION["userName"])){
+	echo "<br>yes";
+}
+else{
+	echo "<br>no";
+}
+
+
+
+
+
 ?>
 
-<?php
-	echo "3<br>";
-	exit();
-	echo "4<br>";
-?>
 
-
-<html>
-
-<head>
-</head>
-<body>
-	<form>
-
-	</form>
-</body>
-
-</html>

@@ -1,7 +1,99 @@
 <?php
-	if (isset($_COOKIE["name"])){
-		header("location: index.html");
-	}
+	session_start();
+?>
+
+
+<?php
+	// Set all error to be "" at the beginning
+	$userNameErr = $firstNameErr = $lastNameErr = $contactErr = $passwordErr = $confpassErr = $emailErr= "";
+	$userName = $firstName = $lastName = $address = $city = $state = $email = $contact = $password = $confpass = "";
+	$valid = TRUE;
+	$finishValidation = FALSE;
+		if ($_SERVER['REQUEST_METHOD']=="POST"){
+		
+
+
+		if (empty($userName=trim($_POST["username"]))){
+			$userNameErr = "UserName is required";
+			$valid = FALSE;
+		}
+		else if (!preg_match("/^[a-zA-Z0-9]*$/",$userName)){
+			$userNameErr = "Only Numbers and Letters in UserName (No Space)";
+			$valid = FALSE;
+		}
+		
+		include("database_connect.php");
+		$sql = "SELECT SellerID FROM Seller WHERE SellerID = \"$userName\";";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			$userNameErr = "Username already in use";
+			$valid = FALSE;
+		}
+		$conn->close();
+
+
+		if (empty($firstName=trim($_POST["firstname"]))){
+			$firstNameErr = "First Name is required";
+			$valid = FALSE;
+		}
+		else if (!preg_match("/^[a-zA-Z ]*$/",$firstName)){
+			$firstNameErr = "Only Letters in First Name";
+			$valid = FALSE;
+		}
+
+		if (empty($lastName=trim($_POST["lastname"]))){
+			$lastNameErr = "Last Name is required";
+			$valid = FALSE;
+		}
+		else if (!preg_match("/^[a-zA-Z ]*$/",$lastName)){
+			$lastNameErr = "Only Letters in Last Name";
+			$valid = FALSE;
+		}
+
+		if (empty($contact=trim($_POST["phone"]))){
+			$contactErr = "Contact Number is required";
+			$valid = FALSE;
+		}
+		else if (!preg_match("/^[0-9]*$/",$contact)){
+			$contactErr = "Only Numbers in Contact";
+			$valid = FALSE;
+		}
+
+		$email = trim($_POST["email"]);
+		if (!empty($email)&&!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			$emailErr = "Invalid email";
+			$valid = FALSE;
+		}
+
+		if (empty($password=$_POST["password"])){
+			$passwordErr = "Password is required";
+			$valid = FALSE;
+		}
+		else if(empty($confpass=trim($_POST["confpass"]))){
+			$confpassErr = "Confrim Password is required";
+			$valid = FALSE;
+		}
+		else if ($password!=$confpass){
+			$confpassErr = "Confrim Password not consistent";
+			$valid = FALSE;
+		}
+
+		$finishValidation = TRUE;
+		
+		if ($valid&&$finishValidation){
+			
+			$_SESSION['userName']=$userName;
+			include("database_connect.php");
+			$sql = "INSERT INTO  Seller (SellerID, FirstName, LastName, PassWord, Contact, Address, City, State, Email) 
+			VALUES (\"$userName\", \"$firstName\", \"$lastName\", $password, $contact, \"$address\", \"$city\", \"$state\", \"$email\" );";
+			$conn->query($sql);
+			$conn->close();
+			
+			echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+			
+		}
+	} 
+
 ?>
 
 <html>
@@ -14,81 +106,7 @@
 	<body>
 
 
-	<?php
-		// Set all error to be "" at the beginning
-		$userNameErr = $firstNameErr = $lastNameErr = $contactErr = $passwordErr = $confpassErr = $emailErr= "";
-		$userName = $firstName = $lastName = $address = $city = $state = $email = $contact = $password = $confpass = "";
-		$valid = TRUE;
-		$finishValidation = FALSE;
-		if ($_SERVER['REQUEST_METHOD']=="POST"){
-			if (empty($userName=trim($_POST["username"]))){
-				$userNameErr = "UserName is required";
-				$valid = FALSE;
-			}
-			else if (!preg_match("/^[a-zA-Z0-9]*$/",$userName)){
-				$userNameErr = "Only Numbers and Letters in UserName (No Space)";
-				$valid = FALSE;
-			}
-
-			if (empty($firstName=trim($_POST["firstname"]))){
-				$firstNameErr = "First Name is required";
-				$valid = FALSE;
-			}
-			else if (!preg_match("/^[a-zA-Z ]*$/",$firstName)){
-				$firstNameErr = "Only Letters in First Name";
-				$valid = FALSE;
-			}
-
-			if (empty($lastName=trim($_POST["lastname"]))){
-				$lastNameErr = "Last Name is required";
-				$valid = FALSE;
-			}
-			else if (!preg_match("/^[a-zA-Z ]*$/",$lastName)){
-				$lastNameErr = "Only Letters in Last Name";
-				$valid = FALSE;
-			}
-
-			if (empty($contact=trim($_POST["phone"]))){
-				$contactErr = "Contact Number is required";
-				$valid = FALSE;
-			}
-			else if (!preg_match("/^[0-9]*$/",$contact)){
-				$contactErr = "Only Numbers in Contact";
-				$valid = FALSE;
-			}
-
-			$email = $_POST["email"];
-			if (!empty($email)&&!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				$emailErr = "Invalid email";
-				$valid = FALSE;
-			}
-
-			if (empty($password=$_POST["password"])){
-				$passwordErr = "Password is required";
-				$valid = FALSE;
-			}
-			else if(empty($confpass=$_POST["confpass"])){
-				$confpassErr = "Confrim Password is required";
-				$valid = FALSE;
-			}
-			else if ($password!=$confpass){
-				$confpassErr = "Confrim Password not consistent";
-				$valid = FALSE;
-			}
-
-
-
-
-
-
-			
- 		$finishValidation = TRUE;
-		} 
-		if ($valid&&$finishValidation){
-			echo "<script type='text/javascript'>window.location.href = 'http://yahoo.com';</script>";
-        	exit();
-		}
-	?>
+	
 
 		<ul>
 			<li class="menu"><a class="active" href="index.html">Home</a></li>
@@ -165,6 +183,24 @@
 				<div class="right"><a href="login.html"><input type="reset" value="Cancel"></a></div>
 			</div>
 		</form>
+
+		<div>
+			<?php 
+				if ($valid&&$finishValidation){
+					echo "all good<br>";
+				}
+					
+				if (isset($_SESSION["userName"])){
+					echo "<br>yes";
+					echo $_SESSION["userName"];
+				}
+				else{
+					echo "<br>no";
+				}
+
+
+			?>
+		</div>
 
 
 	</body>	
