@@ -1,6 +1,8 @@
 <?php
-
-
+	session_start();
+	if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){
+		echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+	}
 ?>
 
 <html>

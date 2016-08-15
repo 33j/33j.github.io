@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){
+		echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+	}
 ?>
 
 
@@ -180,7 +183,7 @@
 
 			<div>
 				<div class="left"><input class="finish" type="submit" value="Finish" style="text-align:center;"></div>
-				<div class="right"><a href="login.html"><input type="reset" value="Cancel"></a></div>
+				<div class="right"><a href="login.php"><input type="reset" value="Cancel"></a></div>
 			</div>
 		</form>
 
