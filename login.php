@@ -9,7 +9,6 @@
 	<head>
 		<link type="text/css" rel="stylesheet" href="loginstyle.css"/>
 		<meta charset="UTF-8">
-
 	</head>
 	
 	<body>
@@ -20,15 +19,16 @@
 			<li><a href="#about">About</a></li>
 		</ul>
 	
-		<form>
-			Username: <input type="text" name="username"><br>
-			
-			Password: <input type="text" name="password">
-		</form>
+		<form action="" method="post">
+			<label for="userName">Username</label>
+			<input style="width:100%" type="text" name="username"></p>
+			<label for="password">Password</label>
+			<input style="width:100%" type="text" name="password"></p>
 		
+			<input type="submit" value="login">
+		</form>
+		<button onclick="window.location.href='signup.php'">signup</button>
 		<a href = "#forgot"><sup>forgot password/username?</sup></a>
 		<br>
 	</body>
-	<a href="sellerpage.php"><input type="submit" value="login"></a>
-	<a href = "signup.php"><input type="submit" value="signup"></a>
 </html>

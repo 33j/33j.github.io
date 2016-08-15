@@ -81,6 +81,10 @@
 			$valid = FALSE;
 		}
 
+		$address=$_POST["address"];
+		$city=$_POST["city"];
+		$state=$_POST["state"];
+
 		$finishValidation = TRUE;
 		
 		if ($valid&&$finishValidation){
@@ -146,7 +150,7 @@
 				
 				<div>				
 					<div class="left"><li>City:</li></div>
-					<div class="right"><input class="text" type="text" name="city" value="<?php print($city); ?>"></div>
+					<div class="right"><input class="text" type="text" name="city" value="<?php print $city; ?>"></div>
 				</div>
 					
 				<div>	
@@ -183,24 +187,13 @@
 
 			<div>
 				<div class="left"><input class="finish" type="submit" value="Finish" style="text-align:center;"></div>
-				<div class="right"><a href="login.php"><input type="reset" value="Cancel"></a></div>
+				<div class="right"><input type="reset" value="Cancel"></div>
 			</div>
 		</form>
 
 		<div>
 			<?php 
-				if ($valid&&$finishValidation){
-					echo "all good<br>";
-				}
-					
-				if (isset($_SESSION["userName"])){
-					echo "<br>yes";
-					echo $_SESSION["userName"];
-				}
-				else{
-					echo "<br>no";
-				}
-
+			//testing php
 
 			?>
 		</div>

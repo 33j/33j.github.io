@@ -1,32 +1,10 @@
 <?php
-
-
-
-
-$dbservername = "comp380gp4.cztejaciasub.us-west-2.rds.amazonaws.com";
-$dbusername = "comp380";
-$dbpassword = "comp380gp4";
-$dbname = "comp380gp4";
-
-
-$userName = "username";
-
-//setcookie("userName", "", time() - 3600,"/");
-//unset($_COOKIE["userName"]);
-
-//	setcookie("userName", $userName, time() + (86400 * 30), "/");
-echo $_SESSION	["userName"];
-	
-if (isset($_SESSION["userName"])){
-	echo "<br>yes";
-}
-else{
-	echo "<br>no";
-}
-
-
-
-
+include("database_connect.php");
+$sql = "SELECT * FROM Seller WHERE SellerID = 'username';";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+echo $row['PassWord'];
+$conn->close();
 
 ?>
 
