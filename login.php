@@ -5,9 +5,68 @@
 	}
 ?>
 
+<?php
+	$usernameErr = $passwordErr="";
+	$username = $password="";
+	$noEmpty = TRUE;
+	$afterValidation = FALSE;
+
+	//After user click login, get both username and password
+	
+	if ($_SERVER['REQUEST_METHOD']=="POST"){
+		
+		$username = trim($_POST['username']);
+		$password = trim($_POST['password']);
+
+		if(empty($username)){
+			$usernameErr="Please enter Username";
+			$noEmpty = FALSE;
+		}
+
+		if(empty($password)){
+			$passwordErr="Please enter Password";
+			$noEmpty = FALSE;
+		}
+
+		$afterValidation = TRUE;
+		if ($noEmpty){
+			
+			include("database_connect.php");
+			$sql = "SELECT SellerID, PassWord FROM Seller WHERE SellerID = '$username';";
+			$result = $conn->query($sql);
+			$row = $result->fetch_assoc();
+			
+			//case1: no such username
+			if ($result->num_rows == 0){
+				$usernameErr="No such Username";
+				$passwordErr="";
+			}
+			
+			//case2: username exists and password match
+			else if ($row['PassWord']==$password){
+				$_SESSION['userName']=$username;
+				echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+			}
+			//case3: username exist but password wrong
+			else {
+				$passwordErr="Username Password not match";
+			}
+			
+			$conn->close();
+			
+			
+	
+		}
+		
+	}
+	
+	
+?>
+
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="loginstyle.css"/>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<meta charset="UTF-8">
 	</head>
 	
@@ -18,17 +77,28 @@
 			<li><a href="contact.html">Contact</a></li>
 			<li><a href="#about">About</a></li>
 		</ul>
-	
-		<form action="" method="post">
-			<label for="userName">Username</label>
-			<input style="width:100%" type="text" name="username"></p>
-			<label for="password">Password</label>
-			<input style="width:100%" type="text" name="password"></p>
+		<div class="container">
+			<form role="form" action="" method="post">
+				<div class="form-group">
+					<label for="userName">Username</label>
+					<input class="form-control" type="text" name="username"/><span style="color:red;"><?php print($usernameErr) ?></span></p>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input class="form-control" type="password" name="password"><span style="color:red;"><?php print($passwordErr) ?></span></p>		
+				</div>
+				<div class="checkbox">
+					<input class="btn btn-default" type="submit" value="login">
+				</div>
+			</form>
+			<a href="index.html"><sup>forgot password/username?</sup></a>
+		</div>
+
+		<div class="checkbox">
+		<a  href="signup.php"><button style="width:100%" class="btn btn-default"  type="button">Signup</button></a>
+		</div>
+
 		
-			<input type="submit" value="login">
-		</form>
-		<button onclick="window.location.href='signup.php'">signup</button>
-		<a href = "#forgot"><sup>forgot password/username?</sup></a>
-		<br>
+		
 	</body>
 </html>

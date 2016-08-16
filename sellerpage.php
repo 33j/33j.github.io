@@ -1,43 +1,40 @@
 <?php
 	session_start();
-	//if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){
-	//	echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
-	//}
 ?> 
+
+
 
 
 
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="carstyles.css"/>
+		<!--style overwrite-->
+		<style>
+		#header{
+				height: 150px;
+				background: white; /* For browsers that do not support gradients */
+				background: -webkit-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1)); /*Safari 5.1-6*/
+				background: -o-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1)); /*Opera 11.1-12*/
+				background: -moz-linear-gradient(bottom,rgba(255,255,255,0),rgba(255,255,255,1)); /*Fx 3.6-15*/
+				background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,1)); /*Standard*/
+			
+		}
+		</style>
 		<title>Sellers page</title>
 	</head>
+
 	<body>
-		<div><a href="http://yahoo.com">fsdf</a></div>
-		<div><a href="http://yahoo.com">fsdf</a></div>
-		<div><a href="http://yahoo.com">fsdf</a></div>
-	</body>
-</html>
+	<div id="header">
+	<p style="font-size:50px; text-align:center;"> Welcome <?php echo($_SESSION["userName"]); ?> </p>
+	</div>
 
-
-<!--<html>
-	<head>
+	
 		
-		<title>Sellers page</title>
-	</head>
-
-	<body>
-		<a herf="http://yahoo.com" target="_blank">hihihi</a>
-	<div style="height:10%;">
-	<p> Welcome <?php //echo($_SESSION["userName"]); ?> </p>
+	<div style="height:30%;">
+		<a style="display:block; width:20%; margin:auto;" href="http://yahoo.com"><img style="width:100%;" alt="Click to post" src="drawButton (1).png"/></a>	
 	</div>
-
-	<div style="height:20%;">
-		<a herf="http://yahoo.com">hihihi</a>
-
-		<a herf="http://yahoo.com"><img style="height:100%;" alt="Click to post" src="drawButton (1).png"/></a>
-	</div>
-
+	
 	<div>
 	Seller database should update this box with a list of cars the seller has posted
 	also create a password verification for the log in page.
@@ -47,4 +44,3 @@
 
 </html>
 
--->
