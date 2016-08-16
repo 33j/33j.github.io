@@ -92,11 +92,11 @@
 			$_SESSION['userName']=$userName;
 			include("database_connect.php");
 			$sql = "INSERT INTO  Seller (SellerID, FirstName, LastName, PassWord, Contact, Address, City, State, Email) 
-			VALUES (\"$userName\", \"$firstName\", \"$lastName\", $password, $contact, \"$address\", \"$city\", \"$state\", \"$email\" );";
+			VALUES (\"$userName\", \"$firstName\", \"$lastName\", \"$password\", $contact, \"$address\", \"$city\", \"$state\", \"$email\" );";
 			$conn->query($sql);
 			$conn->close();
 			
-			echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+			 
 			
 		}
 	} 

@@ -1,6 +1,19 @@
 <?php
 	session_start();
+	$infoProvide = FALSE;
+	$imgProvide = FALSE;
 ?>
+
+<?php
+	if($_SERVER['REQUEST_METHOD']=="GET"){
+		if(isset($_POST["submit"]){
+			echo "hi"
+		}
+
+	}
+?>
+
+
 
 <html>
 	<head>
@@ -17,7 +30,10 @@
 			<li class="menu"><a href="#about">About</a></li>
 		</ul>
 		<div>
-			<?php echo($_SESSION["userName"]); ?>
+			<?php
+				//testing only
+				echo($_SESSION["userName"]); 
+			?>
 		</div>
 		
 		<form action="" method="POST" class="image">

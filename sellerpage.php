@@ -4,8 +4,6 @@
 
 
 
-
-
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="carstyles.css"/>
@@ -32,7 +30,7 @@
 	
 		
 	<div style="height:30%;">
-		<a style="display:block; width:20%; margin:auto;" href="http://yahoo.com"><img style="width:100%;" alt="Click to post" src="drawButton (1).png"/></a>	
+		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Click to post" src="drawButton (1).png"/></a>	
 	</div>
 	
 	<div>
