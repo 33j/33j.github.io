@@ -35,7 +35,7 @@
 	<div style="height:auto; content:""; display:table">
 div 1
 		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Click to post" src="AddProduct.png"/></a>
-		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Remove Product" src="RemoveProduct.png"></a>
+		<a style="display:block; width:20%; margin:auto;" href="blanksellerpage.php"><img style="width:100%;" alt="Remove Product" src="RemoveProduct.png"></a>
 		<a style="display:block; width:20%; margin:auto;" href="contact.html"><img style="width:100%;" alt="Contact Us" src="ContactUs.png"></a>
 	</div>
 	
