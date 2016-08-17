@@ -2,9 +2,10 @@
 
 session_start();
 session_destroy();
-
-$img="hih" ."." ."yolo";
-print($img);
+$hi = 3;
+$img="$hi" ."." ."yolo";
+$file_name="$hi"."."."jpg";
+print($file_name);
 /*
 session_start();
 if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){

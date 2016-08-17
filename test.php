@@ -49,17 +49,7 @@
          <input type="submit"/>
       </form>
 
-      <!--
-      <form action="" method="POST"	>
-         <input type="text" name="text1"/>
-         <input type="submit" value="text1"/>
- 		</form>
 
-		<form action="" method="POST">
-			<input type="text" name="text2"/>
-			<input type="submit" value="text2"/>
-      	</form>
-		-->
 
       <div>
       	<?php
@@ -98,7 +88,7 @@
 			else{
 				echo "noiexist<br>";
 			}
-			echo $_FILES['image']['name'];
+			e
 		?>
 
 

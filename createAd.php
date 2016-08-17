@@ -6,8 +6,9 @@
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$makeErr = $modelErr = $yearErr = $mileageErr = $priceErr =$colorErr = "";
 		$make = $model = $year =$mileage = $price = $color = "";
+		$carid = 0;
 		$valid = TRUE;
-		$withImg = FALSE;
+		$imgValid = True;
 		
 		if (empty($make=trim($_POST["make"]))){
 			$makeErr = "* Make info required";
@@ -51,23 +52,10 @@
 			$valid = FALSE;
 		}
 
-		if($valid){
-			include("database_connect.php");
-			$sql = "INSERT INTO  Car (Price, Makes, Models, Miles, Color, Year) 
-				VALUES ($price, \"$make\", \"$model\", $mileage, \"$color\", $year);";
-			$conn->query($sql);
-			
-			$last_id = $conn->insert_id;
-			$username = $_SESSION['userName'];
-			$sql = "INSERT INTO ID (SellerID, CarID) VALUES (\"$username\", $last_id);";
-			$conn->query($sql);
-			
 
-			$conn->close();
-		}
 		
-		
-		if($_FILES['image']['tmp_name']){
+		//If there is image 
+		if($valid && $_FILES['image']['tmp_name']){
 			$imgErr="";
 			$errors= array();
 			$file_name = $_FILES['image']['name'];
@@ -79,21 +67,51 @@
 			$expensions= array("jpg");
 			
 			if(in_array($file_ext,$expensions)=== false){
-				$errors[]="extension not allowed, please choose a JPEG or PNG file.";
+				$errors[]="extension not allowed, please choose jpg file.";
+				$imgErr="Only jpg";
+				//$imgValid = FALSE;
 			}
 			
 			if($file_size > 2097152){
-				$errors[]='File size must be excately 2 MB';
+				$errors[]='File size must be smaller 2 MB';
+				$imgErr='File size must be smaller 2 MB';
+				//$imgValid = FALSE;
 			}
 
 			if(empty($errors)==true){
+				include("database_connect.php");
+				$sql = "INSERT INTO  Car (Price, Makes, Models, Miles, Color, Year) 
+					VALUES ($price, \"$make\", \"$model\", $mileage, \"$color\", $year);";
+				$conn->query($sql);
+
+				$carid = $conn->insert_id;
+				$username = $_SESSION['userName'];
+				$sql = "INSERT INTO ID (SellerID, CarID) VALUES (\"$username\", $carid);";
+				$conn->query($sql);
+
+				//insert into image table and get an ID for imgid
+				$sql = "INSERT INTO image (CarID) VALUES ($carid)";
+				$imgid =  $conn->insert_id;
+				$file_name="$imgid"."."."jpg";
 				move_uploaded_file($file_tmp,"images/".$file_name);
-				echo "Success";
-			}
-			else{
-				print_r($errors);
+				$conn->close();
 			}
 		
+		}
+
+		if($valid && !$_FILES['image']['tmp_name']){
+			include("database_connect.php");
+			$sql = "INSERT INTO  Car (Price, Makes, Models, Miles, Color, Year) 
+				VALUES ($price, \"$make\", \"$model\", $mileage, \"$color\", $year);";
+			$conn->query($sql);
+			
+			$carid = $conn->insert_id;
+			$username = $_SESSION['userName'];
+			$sql = "INSERT INTO ID (SellerID, CarID) VALUES (\"$username\", $carid);";
+			$conn->query($sql);
+			
+
+			$conn->close();
 		}
 		
 
