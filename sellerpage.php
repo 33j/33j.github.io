@@ -33,7 +33,7 @@
 	
 		
 	<div style="height:30%;">
-		<img style="width:100%;" alt="Go to Homepage" src="HomePageButton.png">
+
 		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Click to post" src="AddProduct.png"/></a>
 		<img style="width:100%;" alt="Remove Product" src="RemoveProduct.png">
 		<img style="width:100%;" alt="Contact Us" src="ContactUs.png">
