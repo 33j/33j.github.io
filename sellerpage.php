@@ -35,16 +35,17 @@
 	<div style="height:30%;">
 
 		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Click to post" src="AddProduct.png"/></a>
-		<img style="width:100%;" alt="Remove Product" src="RemoveProduct.png">
-		<img style="width:100%;" alt="Contact Us" src="ContactUs.png">
+		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Remove Product" src="RemoveProduct.png"></a>
+		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Contact Us" src="ContactUs.png"></a>
 	</div>
 	
 	<div>
-	Seller database should update this box with a list of cars the seller has posted
-	also create a password verification for the log in page.
+	
+
+	
+	
 	</div>
 
 	</body>
 
 </html>
-
