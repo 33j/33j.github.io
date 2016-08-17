@@ -91,10 +91,12 @@
 
 				//insert into image table and get an ID for imgid
 				$sql = "INSERT INTO image (CarID) VALUES ($carid)";
+				$conn->query($sql);
 				$imgid =  $conn->insert_id;
 				$file_name="$imgid"."."."jpg";
 				move_uploaded_file($file_tmp,"images/".$file_name);
 				$conn->close();
+				echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
 			}
 		
 		}
@@ -112,6 +114,7 @@
 			
 
 			$conn->close();
+			echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
 		}
 		
 
@@ -177,7 +180,7 @@
 				
 				<li>Image: 
 					<div>
-						<input type="file" name="image">
+						<input type="file" name="image"><span class="err"><?php print($imgErr); ?></span>
 					</div>
 				</li>
 				<div>
