@@ -44,6 +44,7 @@
 			
 			//case2: username exists and password match
 			else if ($row['PassWord']==$password){
+				//start the session when you login sucessfully
 				$_SESSION['userName']=$username;
 				echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
 			}
@@ -81,11 +82,11 @@
 			<form role="form" action="" method="post">
 				<div class="form-group">
 					<label for="userName">Username</label>
-					<input class="form-control" type="text" name="username"/><span style="color:red;"><?php print($usernameErr) ?></span></p>
+					<input class="form-control" type="text" name="username"/><span style="color:red;"><?php print($usernameErr) ?></span>
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input class="form-control" type="password" name="password"><span style="color:red;"><?php print($passwordErr) ?></span></p>		
+					<input class="form-control" type="password" name="password"><span style="color:red;"><?php print($passwordErr) ?></span>		
 				</div>
 				<div class="checkbox">
 					<input class="btn btn-default" type="submit" value="login">

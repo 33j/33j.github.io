@@ -24,6 +24,9 @@
 
 	<body>
 	<div id="header">
+	<form action="logout.php">
+		<input type="submit" value="logout"/>
+	</form>
 	<p style="font-size:50px; text-align:center;"> Welcome <?php echo($_SESSION["userName"]); ?> </p>
 	</div>
 

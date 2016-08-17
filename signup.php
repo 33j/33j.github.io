@@ -89,13 +89,15 @@
 		
 		if ($valid&&$finishValidation){
 			
-			$_SESSION['userName']=$userName;
+			
 			include("database_connect.php");
 			$sql = "INSERT INTO  Seller (SellerID, FirstName, LastName, PassWord, Contact, Address, City, State, Email) 
 			VALUES (\"$userName\", \"$firstName\", \"$lastName\", \"$password\", $contact, \"$address\", \"$city\", \"$state\", \"$email\" );";
 			$conn->query($sql);
 			$conn->close();
-			
+			$_SESSION['userName']=$userName;
+			echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
+
 			 
 			
 		}

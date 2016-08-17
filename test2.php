@@ -3,10 +3,8 @@
 session_start();
 session_destroy();
 
-if(isset($_POST["submit"])) {
-	echo "yes";
-}
-
+$img="hih" . "yolo";
+//print($img);
 /*
 session_start();
 if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){
