@@ -82,7 +82,7 @@
 			<form role="form" action="" method="post">
 				<div class="form-group">
 					<label for="userName">Username</label>
-					<input class="form-control" type="text" name="username"/><span style="color:red;"><?php print($usernameErr) ?></span>
+					<input class="form-control" type="text" name="username"/ value="<?php print($username)?>"><span style="color:red;"><?php print($usernameErr) ?></span>
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>

@@ -2,10 +2,8 @@
 
 session_start();
 session_destroy();
-$hi = 3;
-$img="$hi" ."." ."yolo";
-$file_name="$hi"."."."jpg";
-print($file_name);
+$sql = "SELECT Car.*, image\.Image FROM Car LEFT JOIN image ON Car\.CarID=image.";
+print($sql);
 /*
 session_start();
 if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){
