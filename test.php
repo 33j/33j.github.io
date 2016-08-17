@@ -1,5 +1,12 @@
 <?php
-   if(isset($_FILES['image'])){
+	session_start();
+
+?>
+
+
+<?php
+ 
+   	/*
       $errors= array();
       $file_name = $_FILES['image']['name'];
       $file_size =$_FILES['image']['size'];
@@ -7,7 +14,10 @@
       $file_type=$_FILES['image']['type'];
       $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
       
-      var_dump($file_temp);
+      //var_dump($file_tmp);
+      //move_uploaded_file($file_tmp,"images/"."name.jpg");
+
+      
       
       $expensions= array("jpeg","jpg","png");
       
@@ -25,15 +35,69 @@
       }else{
          print_r($errors);
       }
-   }
+      */	
+   
 ?>
 <html>
    <body>
       
       <form action="" method="POST" enctype="multipart/form-data">
          <input type="file" name="image"/>
+         <input type="text" name="text1"/>
+         <input type="text" name="text2"/>
+
          <input type="submit"/>
       </form>
+
+      <!--
+      <form action="" method="POST"	>
+         <input type="text" name="text1"/>
+         <input type="submit" value="text1"/>
+ 		</form>
+
+		<form action="" method="POST">
+			<input type="text" name="text2"/>
+			<input type="submit" value="text2"/>
+      	</form>
+		-->
+
+      <div>
+      	<?php
+			if(isset($_POST['text1'])){
+			echo "hi";
+			echo "$file_tmp";
+		}
+		?>
+
+	</div>
+	<div>
+	
+		<?php
+			if(isset($_POST['text2'])){
+				echo "hi2";
+				echo "$file_tmp";
+			}
+			/*
+			if(isset($_FILES['image'])){
+				echo "yesimage";
+			}
+			else{
+				echo "noimg";
+			}
+			*/
+
+			if ($_FILES['image']['tmp_name']){
+				echo "yesimage";
+			}
+						else{
+				echo "noimg";
+			}
+		?>
+
+
+
+      </div>
+
       
    </body>
 </html>

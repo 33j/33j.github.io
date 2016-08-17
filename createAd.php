@@ -5,7 +5,7 @@
 
 <?php
 	if(isset($_POST["submitpic"])) {
-		$target_dir = "uploads/";
+		$target_dir = "image/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -111,18 +111,21 @@
 				echo($_SESSION["userName"]); 
 			?>
 		</div>
-		
+		<!--
 		<form action="" method="POST" enctype="multipart/form-data" class="image">
 			<p>Upload image</p>
 			<input type="file" name="fileToUpload">
 			<div><input type="submit" value="Upload" name="submit" class="button"/></div>
-			<span><?php print($imgErr); ?></span>
+			<span><?php //print($imgErr); ?></span>
 		</form>
+		-->
 		
-		<ol type="1">
-			
+					
 		
-			<form action="" method="POST">
+			<form action="" method="POST" enctype="multipart/form-data">
+				
+				<ol type="1">
+
 				<li>Vehicle Make: 
 					<div><input type = "text" class = "textbox" name="make" value="<?php print($make); ?>">
 						<span class="err"><?php print($makeErr); ?></span>
@@ -153,7 +156,17 @@
 						<span class="err"><?php print($colorErr); ?></span>
 					</div>
 				</li>
+				
+				<li>Image: 
+					<div>
+						<input type="file" name="fileToUpload">
+					</div>
+				</li>
+				<div>
+				
 				<input type="submit" value="Submit" name="submit" class="button"/>
+				</div>
+				</ol>
 			</form>
 			
 			
