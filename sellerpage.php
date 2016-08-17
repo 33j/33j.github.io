@@ -39,11 +39,20 @@ div 1
 		<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width:100%;" alt="Contact Us" src="ContactUs.png"></a>
 	</div>
 	
-	<div style="height:auto; content:""; display:table" class="box whitebox">
-	Div2
+	<div style="height:auto; content:""; display:table" >
 
-	<a style="display:block; width:20%; margin:auto;" href="createAd.php"><img style="width=12em; length=10em" src="2015-Nissan-Leaf-C.png">
-	
+
+	<a style="display:block; width:20%; float:left" href="createAd.php"><img style="max-width:20em; max-length:20em" src="2015-Nissan-Leaf-C.jpg"></a>
+
+	<p style="float:center; color:Yellow; font-size:2em">
+	&nbsp; &nbsp;Make:Nissan<br>
+	&nbsp; &nbsp;Model:Leaf-C<br>
+	&nbsp; &nbsp;Year:2015<br>
+	&nbsp; &nbsp;Milage:5000<br>
+	&nbsp; &nbsp;Price:$5,000<br>
+	&nbsp; &nbsp;Color:Blue<br>
+	</p>
+
 	</div>
 
 	</body>
