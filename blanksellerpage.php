@@ -40,18 +40,7 @@ div 1
 	</div>
 	
 	<div style="height:auto; content:""; display:table" >
-
-
-	<a style="display:block; width:20%; float:left" href="createAd.php"><img style="max-width:20em; max-length:20em" src="2015-Nissan-Leaf-C.jpg"></a>
-
-	<p style="float:center; color:Yellow; font-size:2em">
-	&nbsp; &nbsp;Make:Nissan<br>
-	&nbsp; &nbsp;Model:Leaf-C<br>
-	&nbsp; &nbsp;Year:2015<br>
-	&nbsp; &nbsp;Milage:5000<br>
-	&nbsp; &nbsp;Price:$5,000<br>
-	&nbsp; &nbsp;Color:Blue<br>
-	</p>
+		
 
 	</div>
 
