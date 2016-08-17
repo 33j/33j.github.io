@@ -92,8 +92,14 @@
 						else{
 				echo "noimg";
 			}
+			if (file_exists($_FILES['image']['tmp_name'])){
+				echo "yesexist";
+			}
+			else{
+				echo "noiexist<br>";
+			}
+			echo $_FILES['image']['name'];
 		?>
-
 
 
       </div>

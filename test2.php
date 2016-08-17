@@ -3,8 +3,8 @@
 session_start();
 session_destroy();
 
-$img="hih" . "yolo";
-//print($img);
+$img="hih" ."." ."yolo";
+print($img);
 /*
 session_start();
 if (isset($_SESSION["userName"])&&!empty($_SESSION["userName"])){

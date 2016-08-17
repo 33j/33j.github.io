@@ -12,9 +12,7 @@
 	$userName = $firstName = $lastName = $address = $city = $state = $email = $contact = $password = $confpass = "";
 	$valid = TRUE;
 	$finishValidation = FALSE;
-		if ($_SERVER['REQUEST_METHOD']=="POST"){
-		
-
+	if ($_SERVER['REQUEST_METHOD']=="POST"){
 
 		if (empty($userName=trim($_POST["username"]))){
 			$userNameErr = "UserName is required";

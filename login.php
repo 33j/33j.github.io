@@ -41,11 +41,11 @@
 				$usernameErr="No such Username";
 				$passwordErr="";
 			}
-			
 			//case2: username exists and password match
 			else if ($row['PassWord']==$password){
 				//start the session when you login sucessfully
 				$_SESSION['userName']=$username;
+				$conn->close();
 				echo "<script type='text/javascript'>window.location.href = 'sellerpage.php';</script>";
 			}
 			//case3: username exist but password wrong
@@ -53,7 +53,7 @@
 				$passwordErr="Username Password not match";
 			}
 			
-			$conn->close();
+			
 			
 			
 	
