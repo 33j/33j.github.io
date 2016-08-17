@@ -40,27 +40,6 @@ div 1
 	</div>
 	
 	<div style="height:auto; content:""; display:table" >
-		<a style="display:block; width:20%; float:left" href="createAd.php"><img style="max-width:20em; max-length:20em" src="RedHondaCivic.jpg"></a>
-
-	<p style="float:center; color:Yellow; font-size:2em">
-	&nbsp; &nbsp;Make:Honda<br>
-	&nbsp; &nbsp;Model: Civic European Type R<br>
-	&nbsp; &nbsp;Year:2011 probably<br>
-	&nbsp; &nbsp;Milage:5000<br>
-	&nbsp; &nbsp;Price:$5,000<br>
-	&nbsp; &nbsp;Color:Red<br>
-	</p>
-
-	<a style="display:block; width:20%; float:left" href="createAd.php"><img style="max-width:20em; max-length:20em" src="RedHybrid.jpg"></a>
-
-	<p style="float:center; color:Yellow; font-size:2em">
-	&nbsp; &nbsp;Make:Toyota<br>
-	&nbsp; &nbsp;Model:Some Prius Hybrid<br>
-	&nbsp; &nbsp;Year:2015 probably<br>
-	&nbsp; &nbsp;Milage:5000<br>
-	&nbsp; &nbsp;Price:$5,000<br>
-	&nbsp; &nbsp;Color:Orange<br>
-	</p>
 
 
 	<a style="display:block; width:20%; float:left" href="createAd.php"><img style="max-width:20em; max-length:20em" src="2015-Nissan-Leaf-C.jpg"></a>
