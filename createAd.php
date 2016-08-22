@@ -101,6 +101,7 @@
 		
 		}
 
+		//If there is  NO image and info is valid
 		if($valid && !$_FILES['image']['tmp_name']){
 			include("database_connect.php");
 			$sql = "INSERT INTO  Car (Price, Makes, Models, Miles, Color, Year) 
@@ -192,10 +193,12 @@
 			
 			
 		</ol>
+
+		<!--testing div-->
 		<div>
 			<?php
-				//testing only
-				echo($_SESSION["userName"]); 
+
+				
 			?>
 		</div>
 		

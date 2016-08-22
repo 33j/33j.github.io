@@ -42,7 +42,7 @@
 
 		$yearMin=trim($_POST['yearMin']);
 		$yearMax=trim($_POST['yearMax']);
-		if (empty($yearMin)){
+		if ($yearMin===""){
 			$yearErr="Year not provided";
 		}
 		else if (!preg_match("/^[0-9]*$/",$yearMin)){
@@ -64,7 +64,7 @@
 
 		$priceMin=trim($_POST['priceMin']);
 		$priceMax=trim($_POST['priceMax']);
-		if (empty($priceMin)){
+		if ($priceMin===""){
 			$priceErr="price not provided";
 		}
 		else if (!preg_match("/^[0-9]*$/",$priceMin)){
@@ -111,8 +111,9 @@
 
 	</center>
 	
+
+	<!--This div is the criteria(range setting part)-->
 	<div>
-		
 		<form action="" method="POST">
 			<div style="display:inline-block; width:15%; text-align:center;">
 				<label for="sort">Sort Option</label><br>
@@ -149,7 +150,7 @@
 
 		
 <?php
-
+	//This php display all available car in database
 	include("database_connect.php");
 	$sql = "SELECT Car.*, image.Image FROM Car LEFT JOIN image ON Car.CarID=image.CarID 
 		WHERE (Year BETWEEN $validYearMin AND $validYearMax) AND (Price BETWEEN $validPriceMin AND $validPriceMax)
@@ -160,7 +161,7 @@
 	// output data of each row
 		while($row = $result->fetch_assoc()) {
 			//image path
-	    	$imgpath="images/".$row["Image"].".jpg";
+			$imgpath="images/".$row["Image"].".jpg";
 
 			echo "<div class='car'>";
 
@@ -177,16 +178,14 @@
 		}
 	}
 	$conn->close();
-	
-	
 ?>
 
 <!-- Testing area-->
 <div>
-<?php 
+	<?php 
 
 
-?>
+	?>
 </div>
 
 
