@@ -1,6 +1,7 @@
 
 <?php
 	session_start();
+	$removeErr="";
 ?>
 
 <?php
@@ -33,6 +34,9 @@
 			}
 			$conn->close();
 		}
+		else{
+			$removeErr="No Car Selected to be Removed";
+		}
 	}
 	
 ?>
@@ -51,9 +55,10 @@
 					background: linear-gradient(bottom, rgba(255,255,255,0), rgba(255,255,255,1)); /*Standard*/
 				
 			}
+
 			.checkOption{height:30%; background-color:rgba(255,255,255,0.5);}
 			.checkBox{ width:20%;float:left; text-align: center; background-color:red;}
-			.car{height:100%; width:80%;float:right; text-align: center; background-color:yellow;}
+			.car{height:100%; width:80%;float:right; text-align: center;}
 			.carInfo{height:100%; width:50%; float:left; text-align: center; font-size: 20px; }
 			.carImg{height:100%; width:50%; float:right; text-align: center;}
 
@@ -61,9 +66,10 @@
 	</head>
 	<body>
 		<div id="header">
-			<div style="text-align:center;"><a href="sellerpage.php">Back to Manage Page</a><div>
+			<div style="text-align:center;"><a href="sellerpage.php">Back to Manage Page</a></div>
 			<p style="font-size:50px; text-align:center;"> Select Car(s) You wish to remove </p>
 		</div>
+		<div>
 		<form action="" method="POST">
 			<?php
 				include("database_connect.php");
@@ -97,6 +103,8 @@
 
 			?>
 		</form>
+		<div style="text-align:center; font-size:20px; color:red; background-color:rgba(255,255,255,0.5);"><?php echo($removeErr) ?></div>
+		
 
 		<!--testing div-->
 		<div>

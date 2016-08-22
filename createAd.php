@@ -143,7 +143,7 @@
 			<li class="menu"><a href="#about">About</a></li>
 		</ul>
 
-		
+		<div style="text-align:center;"><a href="sellerpage.php">Back to Manage Page</a></div>
 			<form action="" method="POST" enctype="multipart/form-data">
 				
 				<ol type="1">
