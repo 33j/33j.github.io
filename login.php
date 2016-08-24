@@ -52,10 +52,7 @@
 			else {
 				$passwordErr="Username Password not match";
 			}
-			
-			
-			
-			
+					
 	
 		}
 		
@@ -76,13 +73,13 @@
 		<ul>
 			<li><a class="active" href="index.html">Home</a></li>
 			<li><a href="contact.html">Contact</a></li>
-			<li><a href="#about">About</a></li>
+			<li><a href="about.html">About</a></li>
 		</ul>
 		<div class="container">
 			<form role="form" action="" method="post">
 				<div class="form-group">
 					<label for="userName">Username</label>
-					<input class="form-control" type="text" name="username"/ value="<?php print($username)?>"><span style="color:red;"><?php print($usernameErr) ?></span>
+					<input class="form-control" type="text" name="username" value="<?php print($username)?>"><span style="color:red;"><?php print($usernameErr) ?></span>
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
@@ -92,7 +89,7 @@
 					<input class="btn btn-default" type="submit" value="login">
 				</div>
 			</form>
-			<a href="index.html"><sup>forgot password/username?</sup></a>
+			<a href="forget_password.php"><sup>forgot password/username?</sup></a>
 		</div>
 
 		<div class="checkbox">
